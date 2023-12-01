@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NgFor test</title>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="input-text">
+    <input class="name-input" type="text" placeholder="Enter the dynamic component name"
+           [(ngModel)]="dynamicComponentName">
+
+    <button class="btn btn-success"
+            [disabled]="isNameInputFieldEmpty()"
+            (click)="addComponentToComponentsList()">
+      Add Component
+    </button>
+
+    <app-exam *ngFor="let component of componentsList"
+              [componentNameFromParent]="component"
+    ></app-exam>
+
+  </div>
+
+</div>
+
+</body>
+</html>

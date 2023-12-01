@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div class="ng-model">
+    <input type="text" [(ngModel)]="textFiledText">
+    <p>{{ getTextFiledText() }}</p>
+  </div>
+  <div>
+    <p>{{componentNameFromParent}}</p>
+    <button class="btn btn-success" [disabled]="isTextFiledEmpty()" (click)="onButtonClick()">Submit</button>
+  </div>
+</div>
+</body>
+</html>

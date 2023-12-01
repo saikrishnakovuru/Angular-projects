@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div class="container">
+  <p>
+    {{'server'}} with id {{serverId}} is {{serverStatus}}
+  </p>
+
+  <p>
+    {{getName()}} with id {{getId()}} is {{getServerStatus()}}
+  </p>
+
+  <button class="btn btn-primary"
+          [disabled]="!enableAddServerButtonInTimeLimit"
+          (click)="onAddServerButtonClick()"> Add Server
+  </button>
+
+  {{serverCreationStatus}}
+
+  <div>
+    <input type="text" [(ngModel)]="serverName">
+  </div>
+  <div>{{serverName}}</div>
+
+
+  <div class="exercise2">
+    <input type="text" [(ngModel)]="userName">
+    <div>
+      {{userName}}
+    </div>
+    <button class="btn btn-primary"
+            (click)="resetNameOnClick()"
+            [disabled]="isUserNameEmpty()">Name
+    </button>
+  </div>
+
+  <div class="ng-if">
+    <input type="text" [(ngModel)]="name">
+    <button class="btn btn-success" (click)="onSubmitButtonClick()">Submit</button>
+    <div>
+      <p *ngIf="nameCreated; else noName"> The name is created which is {{name}}</p>
+      <ng-template #noName>
+        <p>No name is created yet</p>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="ng-style">
+    <p [ngStyle]="{'color': getParagraphTextColor()}">Styled text color</p>
+    <button (click)="onChangeColorClick()">Change color</button>
+
+  </div>
+
+</div>
+<button (click)="onAddExamComponentButtonClick()">Add Exam component</button>
+
+<div class="exam-component">
+  <app-exam *ngFor="let component of examComponents"></app-exam>
+</div>
+
+
+</body>
+<head>
+  <meta charset="UTF-8">
+  <title>Server page</title>
+</head>
+</html>
