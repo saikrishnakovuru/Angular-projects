@@ -13,9 +13,9 @@ export class CockpitComponent {
   public newServerName: string = '';
   public newServerContent: string = '';
 
-  public onAddServer(): void {
+  public onAddServer(serverName: HTMLInputElement): void {
     this.serverCreated.emit({
-      serverName: this.newServerName,
+      serverName: serverName.value,
       serverContent: this.newServerContent
     });
   }
