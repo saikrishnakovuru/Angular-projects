@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +11,21 @@ export class AppComponent {
     content: string;
     type: string;
   }[] = [];
+
+  public onServerAdded(serverData: { serverName: string, serverContent: string }): void {
+    this.serverElements.push({
+      type: 'server',
+      name: serverData.serverName,
+      content: serverData.serverContent,
+    });
+  }
+
+  public onBlueprintAdded(blueprintData: { serverName: string, serverContent: string }): void {
+    this.serverElements.push({
+      type: 'blueprint',
+      name: blueprintData.serverName,
+      content: blueprintData.serverContent,
+    });
+  }
+
 }
