@@ -7,7 +7,7 @@ from the styles of the rest of the application. This can be useful for preventin
 
 The default one is Emulated and the other options are None and ShadowDom
 
-```java
+```typescript
 @Component({
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
