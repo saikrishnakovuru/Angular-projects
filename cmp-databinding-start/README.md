@@ -16,4 +16,4 @@ The default one is Emulated and the other options are None and ShadowDom
 })
 ```
 
-using None removes the unique selector added by angular and the styles gets applied globally though on writing in one CSS file.
+using None removes the unique selector to the elements in a component added by angular and the styles gets applied globally though on writing in one CSS file.
