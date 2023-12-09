@@ -20,7 +20,9 @@ using None removes the unique selector to the elements in a component added by a
 
 ## Local references in templates
 
-This is an alternate to {(ngModel)} where we can right away use the text entered in a field. However, we can use that inside the template not in the TS file.  
+This is an alternate to {(ngModel)} where we can right away use the text entered in a field. However, we can use that inside the template not in the TS file.
+
+> Here in the below example we used localReferences using method
 
 ```html
     <label>Server Name</label>
@@ -57,3 +59,24 @@ public onAddBlueprint(): void {
 }
 ```
 we used `serverNameInput` as a local reference in the above example. We cannot right away use that in the TS file if it is not passed as an argument to a method.
+
+## Local reference using `@ViewChild`
+
+We can also fetch the value of local reference in the template using the decorator `@ViewChild`
+
+```html
+<input type="text" class="form-control" #serverContentInput>
+```
+
+```typescript
+@ViewChild('serverContentInput')
+  public serverContentInput: ElementRef;
+
+  public onAddServer(name: HTMLInputElement): void {
+    this.serverCreated.emit({
+      serverName: name.value,
+      serverContent: this.serverContentInput.nativeElement.value
+    });
+  }
+```
+> ElementRef should be imported from angular/core.
