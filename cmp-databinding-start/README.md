@@ -80,3 +80,30 @@ We can also fetch the value of local reference in the template using the decorat
   }
 ```
 > ElementRef should be imported from angular/core.
+
+
+## ngContent
+
+ng-content is used to project content from the parent component into a designated placeholder within the child component
+
+```html
+<!-- parent.component.html -->
+<div>
+  <h2>Parent Component</h2>
+  <app-child>
+    <p>This content is projected into the child component.</p>
+  </app-child>
+</div>
+```
+
+```html
+<!-- child.component.html -->
+<div class="child-container">
+  <h3>Child Component</h3>
+  <ng-content></ng-content>
+</div>
+```
+Instead of writing <p></p> inside the child component we projected it form the parent component as a placeholder within
+the child component( within the open and closed tags of the child component )
+
+To be able to fetch that projected content we use `ng-content` 
