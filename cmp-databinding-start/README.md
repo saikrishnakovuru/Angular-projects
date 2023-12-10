@@ -103,7 +103,7 @@ ng-content is used to project content from the parent component into a designate
   <ng-content></ng-content>
 </div>
 ```
-Instead of writing <p></p> inside the child component we projected it form the parent component as a placeholder within
+Instead of writing `<p></p>` inside the child component we projected it form the parent component as a placeholder within
 the child component( within the open and closed tags of the child component )
 
 To be able to fetch that projected content we use `ng-content` 
@@ -249,8 +249,24 @@ In the above example every time we click the button message gets changed and to 
 
 In Angular, ngDoCheck is a lifecycle hook that allows you to manually implement custom change detection for a component. This can be useful when the default change detection mechanism is not sufficient to detect specific changes in your component's state.
 
-ngDoCheck is called during every change detection cycle
+ngDoCheck is called during every change detection cycle.
 
 It's part of the change detection process and runs more frequently than other lifecycle hooks.
 
 Just like other hooks we also implement DoCheck and import from angular/core.
+
+==============================================================================================================================
+
+## @ContentChild
+
+Similar to @ViewChild, ViewChild is used to fetch the value of local reference in the template.
+
+ng-content is used to project the content from the parent component in the child component.
+
+From the above 2 concepts if we have a local references inside the projected content from the parent that particular local reference can be fetched with the help of @ContentChild
+
+```typescript
+@ContentChild('myChild', { static: true }) myChild: ElementRef;
+```
+
+`{static:true}` is introduces in newer versions of angular.

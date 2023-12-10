@@ -1,0 +1,21 @@
+<div class="container">
+  <button class="btn btn-success" (click)="onStartGame()">Start Game</button>
+  <button class="btn btn-danger" (click)="onStopGame()">Stop Game</button>
+
+
+  <div class="row">
+    <ng-container *ngFor="let num of nums">
+      <app-asignmt-even *ngIf="isEven(num)"
+                        [num]="num">
+      </app-asignmt-even>
+    </ng-container>
+  </div>
+
+  <div class="row">
+    <ng-container *ngFor="let num of nums">
+      <app-asignmt-odd *ngIf="isOdd(num)"
+                       [num]="num">
+      </app-asignmt-odd>
+    </ng-container>
+  </div>
+</div>
