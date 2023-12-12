@@ -12,4 +12,8 @@ export class ShoppingListComponent {
         new Ingredient('Onion', 3),
         new Ingredient('tomato', 2)
     ];
+
+    public nameAndAmount(nameAndAmount: Ingredient): void {
+        this.ingredients.push(new Ingredient(nameAndAmount.getName(), nameAndAmount.getAmount()));
+    }
 }
