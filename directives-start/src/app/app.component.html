@@ -7,12 +7,16 @@
       <br><br>
       <ul class="list-group">
         <li
-          class="list-group-item">
+                class="list-group-item">
         </li>
       </ul>
       <ng-template [ngIf]="onlyOdd">
-        <p>Only odd</p>
+        <p [ngStyle]="" >Only odd</p>
       </ng-template>
     </div>
+  </div>
+  <div class="row">
+    <p basicHighlight>Test Basic Highlight directive</p>
+    <p appBetterHighlight>Test appBetterHighlight directive</p>
   </div>
 </div>
