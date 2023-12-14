@@ -11,12 +11,20 @@
         </li>
       </ul>
       <ng-template [ngIf]="onlyOdd">
-        <p [ngStyle]="" >Only odd</p>
+        <p [ngStyle]="">Only odd</p>
       </ng-template>
     </div>
   </div>
   <div class="row">
     <p basicHighlight>Test Basic Highlight directive</p>
     <p appBetterHighlight>Test appBetterHighlight directive</p>
+  </div>
+
+  <div class="row">
+    <p app-bigFont class="hostBindingPara"> Click to change size via directive (HostBinding/HostListener) </p>
+  </div>
+
+  <div class="row">
+    <p appBindingDirectiveProps defaultColor='lightGreen' highlightColor='lightCoral'> Binding to directive properties </p>
   </div>
 </div>
