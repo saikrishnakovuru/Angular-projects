@@ -12,7 +12,7 @@ export class AppComponent {
       status: 'active'
     },
     {
-      name: 'Testaccount',
+      name: 'Test Account',
       status: 'inactive'
     },
     {
