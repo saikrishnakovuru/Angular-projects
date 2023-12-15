@@ -45,3 +45,73 @@ Look into the folder `using-hostBinding we right away target the style in the CS
 
 In the folder `binding-to-directive-properties` we also declared few properties to the directive to that the user can set the values to the directive in the host element.
 
+## Creating our own structural Directive
+
+# Behind the seens of using `*`
+Instead of using `*` in front of any structural directive we can use <ng-template></ng-template> to achieve the same.
+
+```html
+<p *ngIf="isTrue">
+  Condition passed
+</p>
+```
+
+Lets replace this with `ng-template`
+
+```html
+
+<ng-template [ngIf]="isTrue">
+  Condition passed
+</ng-template>
+```
+
+# Cretaing structural directive
+
+```typescript
+@Directive({
+    selector: '[unless]'
+})
+export class UnlessDirective {
+
+    @Input() set unless(condition: boolean) {
+        if (!condition) {
+            this.viewContainerRef.createEmbeddedView(this.templateRef);
+        } else {
+            this.viewContainerRef.clear();
+        }
+    }
+
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainerRef: ViewContainerRef
+    ) {
+    }
+}
+```
+
+we defined the setter in front of unless, this allows us to perform the custom logic when ever the value of the input property changes  
+
+The two parameters in the constructor are TemplateRef and ViewContainerRef.
+
+`TemplateRef (what)` is basically provides access to the structure of the template. Instances of TemplateRef are typically obtained from the ng-template.
+
+`ViewContainerRef (where)` represents a container `where` views can be attached and detached dynamically.
+
+## ngSwitch
+
+One more directive that needs to be covered is ngSwitch, it is identical to normal switch case
+
+```typescript
+value: number = 5
+```
+
+```html
+<div [ngSwitch]="value">
+  <p *ngSwitchCase="1">value is 1</p>
+  <p *ngSwitchCase="2">value is 2</p>
+  <p *ngSwitchCase="3">value is 3</p>
+  <p *ngSwitchCase="4">value is 4</p>
+  <p *ngSwitchCase="5">value is 5</p>
+  <p *ngSwitchDefault>Default value</p>
+</div>
+```
