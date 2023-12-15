@@ -1,3 +1,5 @@
+import {EventEmitter} from "@angular/core";
+
 export class AccountsService {
     private accounts: { name: string, status: string }[] = [
         {
@@ -14,10 +16,10 @@ export class AccountsService {
         }
     ];
 
+    public statusUpdate = new EventEmitter<string>();
+
     public addAccount(newAccount: { name: string, status: string }): void {
-        console.log(newAccount);
         this.accounts.push(newAccount);
-        console.log(this.accounts);
     }
 
     public updateStatus(id: number, status: string) {

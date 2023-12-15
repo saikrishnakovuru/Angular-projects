@@ -12,12 +12,13 @@ export class NewAccountComponent implements OnInit {
   // @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
 
   constructor(private loggingService: LoggingService, private accountsService: AccountsService) {
+    accountsService.statusUpdate.subscribe(status => alert('status selected is ' + status));
   }
 
   ngOnInit() {
   }
 
-  onCreateAccount(name: string, status: string) {
+  onCreateAccount(name: string, status: string): void {
     // this.accountAdded.emit({
     //   name: accountName,
     //   status: accountStatus
