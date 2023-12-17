@@ -1,15 +1,35 @@
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-xs-12 col-md-8 col-md-offset-2">-->
+<!--      <app-new-account>-->
+<!--      </app-new-account>-->
+<!--      <hr>-->
+<!--      <app-account-->
+<!--              *ngFor="let acc of accounts; let i = index"-->
+<!--              [account]="acc"-->
+<!--              [id]="i"-->
+<!--      >-->
+<!--      </app-account>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <app-new-account>
-      </app-new-account>
-      <hr>
-      <app-account
-              *ngFor="let acc of accounts; let i = index"
-              [account]="acc"
-              [id]="i"
-      >
-      </app-account>
+      <app-active-users
+
+              (userSetToInactive)="onSetToInactive($event)">
+      </app-active-users>
+      <app-inactive-users
+
+              (userSetToActive)="onSetToActive($event)">
+      </app-inactive-users>
     </div>
+    <!--
+      Optimize this app by adding a UsersService which manages the active and inactive users.
+
+      Also add a CounterService which counts the number of active->inactive and inactive->active actions.
+    -->
   </div>
 </div>
