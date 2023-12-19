@@ -1,27 +1,100 @@
-# RoutingStart
+# Angular routes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Routes helps in switching between the pages. In other words, We bring a specific component on to the page through the routes.
 
-## Development server
+We associate a path to each component in the app.module.ts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Thi's is how typically the app.module.ts looks like
 
-## Code scaffolding
+```typescript
+@NgModule({
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        UsersComponent,
+        ServersComponent,
+        UserComponent,
+        EditServerComponent,
+        ServerComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+    ],
+    providers: [ServersService],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Now lets define our routes
 
-## Build
+```typescript
+const appRoutes: Routes = [
+    {path: '', component: HomeComponent},
+    {path: 'users', component: UsersComponent},
+    {path: 'servers', component: ServersComponent}
+];
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        UsersComponent,
+        ServersComponent,
+        UserComponent,
+        EditServerComponent,
+        ServerComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forRoot(appRoutes)
+    ],
+    providers: [ServersService],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+In order to let angular know which component has to be called on calling which path, we define those in Routes like shown in hte above example.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> HomeComponent path is left empty, that is just to make it the default path that means, `localhost:4200` is the default URL loaded and some page has to show up which is Home component in our case by making it empty.
 
-## Running end-to-end tests
+We are not yet done, we just declared the routes however, they need to get registered somewhere and that place is `RouterModule in imports`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```typescript
+imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forRoot(appRoutes)
+    ]
+```
 
-## Further help
+## Rendering
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+As we registered our routes, we now don't right away call the component by its name ex: `<app-server></app-server>` we 
+instead call `<router-outlet></router-outlet>` which is a `directive`.
+
+## Navigating with routerLinks
+
+So, we declared and registered our routes and used `<router-outlet></router-outlet>` to switch between pages and there's one last step 
+yet to be done which is by giving routerLinks.
+
+> In Angular, routerLink is typically used inside the anchor (</a> ) tag to create navigation links
+
+``` html
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+  <li role="presentation"><a routerLink="/servers">Servers</a></li>
+  <li role="presentation"><a [routerLink]="['/users']" >Users</a></li>
+</ul>
+```
+
+Another way of using routerLink is by propertyBinding used for `/users` in the above code snippet. 
+If we right away write the path inside " " after declaring routerLink inside [], angular will search for that variable in ts file which is wrong so we again define it as a string.
+
+> `[routerLink]="/users"` --> angular searches for /users variable in ts file. So, we make it a string `[routerLink]="'/users'"`
+
+To make it simpler when we need to attach multiple routes we enclose it in between array again `[routerLink]="['/users']"`
+for example `[routerLink]="['/users','user']"` now the path is `/users/user`.
