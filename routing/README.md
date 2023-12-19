@@ -81,7 +81,7 @@ instead call `<router-outlet></router-outlet>` which is a `directive`.
 So, we declared and registered our routes and used `<router-outlet></router-outlet>` to switch between pages and there's one last step 
 yet to be done which is by giving routerLinks.
 
-> In Angular, routerLink is typically used inside the anchor (</a> ) tag to create navigation links
+> In Angular, routerLink is typically used inside the anchor `<a></a>`  tag to create navigation links
 
 ``` html
 <ul class="nav nav-tabs">
