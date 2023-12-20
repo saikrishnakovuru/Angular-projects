@@ -98,3 +98,40 @@ If we right away write the path inside " " after declaring routerLink inside [],
 
 To make it simpler when we need to attach multiple routes we enclose it in between array again `[routerLink]="['/users']"`
 for example `[routerLink]="['/users','user']"` now the path is `/users/user`.
+
+
+## Styling active route links
+
+```html
+<ul class="nav nav-tabs">
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a>
+        </li>
+</ul>
+```
+adding `routeLinkActive` directive helps to only highlight the selected link
+
+> `[routerLinkActiveOptions]="{exact: true}"` is only given to the empty path `''` this is because, the angular search if the path is in the link. Since empty path that is '/' is almost available in all the links the home section in our example always gets highlighted.
+> So to overcome this we tell angular to only highlight when that specific path is only searched.
+
+
+## Navigation Paths
+
+when a path is appended with `/` then it appends it to the root domain which is an `absolute path`. Relative path is which without `/` or without `./` .
+
+Example `/users` is `absolute path`  and `users or ./users` is `relative path`
+
+## Navigate programmatically
+
+In case we like to navigate to server page from the home page by clicking a button in hte home page, below steps need to be followed.
+
