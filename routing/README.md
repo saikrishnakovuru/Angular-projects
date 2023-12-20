@@ -135,3 +135,31 @@ Example `/users` is `absolute path`  and `users or ./users` is `relative path`
 
 In case we like to navigate to server page from the home page by clicking a button in hte home page, below steps need to be followed.
 
+// home.component.html
+```html
+<button class="btn btn-success" (click)="onRedirecting()">Redirect to server</button>
+```
+//home.component.ts
+```typescript
+constructor(private router: Router) {
+}
+
+onRedirecting(): void {
+    this.router.navigate(['/servers']);
+}
+```
+
+## Passing Parameters to Routes
+
+In our example code we also have UsersConponent inside UserComponent, and the userComponent has the userdetails with id.
+lets create a route to accept parameter to access usersComponent.
+
+Later in the further examples we'll see how to fetch the value entred in the path and return the used based on thet.
+
+```typescript
+const appRoutes: Routes = [
+    {path: 'users/:id', component: UserComponent}
+];
+```
+
+now we will be able to fetch the UsersComponent with the path `localhost:4200/users/1`.
