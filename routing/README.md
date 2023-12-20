@@ -267,3 +267,15 @@ We added a button earlier to redirect to server page form home page, let's use t
     this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
   }
 ```
+
+## Fetching queryParams and fragments
+
+```typescript
+constructor(private route: ActivatedRoute) {
+}
+
+ngOnInit() {
+    this.route.queryParams.subscribe((queryParams) => console.log(queryParams));
+    this.route.fragment.subscribe((fragments) => console.log(fragments));
+}
+```
