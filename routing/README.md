@@ -127,7 +127,7 @@ adding `routeLinkActive` directive helps to only highlight the selected link
 
 ## Navigation Paths
 
-when a path is appended with `/` then it appends it to the root domain which is an `absolute path`. Relative path is which without `/` or without `./` .
+when a path is appended with `/` then it appends it to the root domain which is an `absolute path`. Relative path is which without `/` or with `./` .
 
 Example `/users` is `absolute path`  and `users or ./users` is `relative path`
 
@@ -219,4 +219,51 @@ Let's create a route link just like we declare in the app.module.ts `path: 'user
 ```html
 <a routerLink="['/user',10,'sai]">User Details</a>
 // which is similar to `/user/10/sai`
+```
+
+## Passing QueryParams and Fragments
+
+We generally crate links with the routerLink and to append a query parameter to the path we something similar to router link that is queryParams
+
+```html
+<a
+[routerLink]="['/servers',5,'edit']"
+[queryParams]="{allowEdit:'1'}"
+href="#"
+class="list-group-item"
+*ngFor="let server of servers">
+{{ server.name }}
+</a>
+```
+
+On clicking any one of the server in the list the path would be `http://localhost:4200/servers/5/edit?allowEdit=1` 
+
+`Fragment` is also one such thing like queryParam we rarely use  
+
+```html
+<a
+[routerLink]="['/servers',5,'edit']"
+[queryParams]="{allowEdit:'1'}"
+fragmant="loadinh"
+href="#"
+class="list-group-item"
+*ngFor="let server of servers">
+{{ server.name }}
+</a>
+```
+
+Here is the complete path later adding the fragment `http://localhost:4200/servers/5/edit?allowEdit=1#loading`
+
+## setting queryParams and fragments programmatically
+
+We added a button earlier to redirect to server page form home page, let's use that now.
+
+```html
+<button class="btn btn-success" (click)="onLoadServer(1)">Load server 1</button>
+```
+
+```typescript
+  public onLoadServer(id: number): void {
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
+  }
 ```
