@@ -140,6 +140,7 @@ In case we like to navigate to server page from the home page by clicking a butt
 <button class="btn btn-success" (click)="onRedirecting()">Redirect to server</button>
 ```
 //home.component.ts
+
 ```typescript
 constructor(private router: Router) {
 }
@@ -163,3 +164,50 @@ const appRoutes: Routes = [
 ```
 
 now we will be able to fetch the UsersComponent with the path `localhost:4200/users/1`.
+
+## Fetching route parameters
+
+In this step let's pass another parameter name ot the UsersComponent so the Routes in the app.module.ts looks like 
+
+```typescript
+const appRoutes: Routes = [
+    {path: 'users/:id:/name', component: UserComponent}
+];
+```
+
+```typescript
+export class UserComponent implements OnInit {
+    public user: { id: number, name: string };
+
+    constructor(private activatedRoute: ActivatedRoute) {
+    }
+
+    ngOnInit() {
+        this.activatedRoute.params
+            .subscribe(
+                (params: Params): void => {
+                    this.user = {
+                        id: params['id'],
+                        name: params['name']
+                    }
+                }
+            );
+    }
+}
+```
+
+We here have an user object to hold id and name. In order to fetch the parameters in the path we need to get hold of 
+current active route which is provided by `ActivatedRoute`.
+
+The reason behind the below code inside subscribe
+```typescript
+(params: Params): void => {
+                    this.user = {
+                        id: params['id'],
+                        name: params['name']
+                    }
+                }
+```
+we may have right away set the values using `user.id = ` instead of accessing the object and setting them like in the above code.
+
+> The reason is user is not initialized but just declared.
