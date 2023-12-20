@@ -211,3 +211,12 @@ The reason behind the below code inside subscribe
 we may have right away set the values using `user.id = ` instead of accessing the object and setting them like in the above code.
 
 > The reason is user is not initialized but just declared.
+
+## creating a routeLink in html page
+
+Let's create a route link just like we declare in the app.module.ts `path: 'users/:id:/name'`
+
+```html
+<a routerLink="['/user',10,'sai]">User Details</a>
+// which is similar to `/user/10/sai`
+```
