@@ -279,3 +279,32 @@ ngOnInit() {
     this.route.fragment.subscribe((fragments) => console.log(fragments));
 }
 ```
+
+## {relativeTo: this.route}
+
+For suppose we are calling below method on a button click
+
+```typescript
+public onEditServer(): void {
+    this.router.navigate(['/servers', this.server.id, 'edit']);
+  }
+```
+Look at the path, we are supposed to navigate to servers `/servers/id/edit`
+
+If we are already in the /servers/id then we can used the absolute path instead of relative path.
+
+```typescript
+public onEditServer(): void {
+    this.router.navigate(['edit'],{relativeTo:this.route});
+  }
+```
+
+## Redirecting wildcard routes
+
+When an user accedentally type some wrong URL we should intimate the user that he entred wrong path. So, lets create a component and use that for all the incorrect paths.
+
+```typescript
+  {path: '**', component: PageNotFoundComponent}
+```
+
+we add the above line in Routes inside app.module.ts. `**` automatically catches all the wrong paths.
