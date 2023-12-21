@@ -308,3 +308,8 @@ When an user accedentally type some wrong URL we should intimate the user that h
 ```
 
 we add the above line in Routes inside app.module.ts. `**` automatically catches all the wrong paths.
+
+## Route Guards
+
+> ![img.png](img.png)
+
