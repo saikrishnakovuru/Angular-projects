@@ -337,3 +337,13 @@ onSubmit() {
 ```
 
 > the names must be double-checked with the name we give to the input controls,  in 1.
+
+## Reset the forms
+```typescript
+
+onSubmit() {
+    this.signUpForm.reset(); 
+  }
+```
+
+Resetting the form not only cleares out the data entred in the field inside the forms also the state of the form.
