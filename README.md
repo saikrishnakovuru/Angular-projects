@@ -5,7 +5,8 @@
 3. directives-start
 4. services
 5. routing
-6. forms_TD(testDrivenForm)
+6. forms_TD(TemplateDriven)
+7. forms_reactive
 
 # list of Direcives
 
