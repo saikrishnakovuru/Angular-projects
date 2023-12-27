@@ -229,3 +229,37 @@ ngOnInit() {
 ```
 
 `this.forbiddenEmail.bind(this)` as part of `email`.
+
+## Reset the form
+
+we can simply reset the form simply calling reset() method later clicking the submit button.
+
+```typescript
+onsubmit(){
+    this.signUpForm.reset();
+}
+```
+
+## setValue and patchValue
+
+setValue method is used to set the values for all form controls in the form group.
+
+The below code should be called in a new method after clicking submit which is `(ngSubmit)="onSubmit()"` 
+```typescript
+this.signUpForm.setValue({
+    'userData':{
+        'userName': 'Max',
+        'email': 'max@test.com'
+    },
+    'gender': 'male',
+    'hobbies': []
+})
+```
+The patchValue method is used to set the values for some or all form controls in the form group.
+```typescript
+this.signUpForm.patchValue({
+    'userData':{
+        'userName': 'max'
+    }
+})
+```
