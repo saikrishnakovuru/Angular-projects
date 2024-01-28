@@ -106,7 +106,11 @@ ng-content is used to project content from the parent component into a designate
 Instead of writing `<p></p>` inside the child component we projected it form the parent component as a placeholder within
 the child component( within the open and closed tags of the child component )
 
-To be able to fetch that projected content we use `ng-content` 
+To be able to fetch that projected content we use `ng-content`.
+
+See the blow example how to use the attributes inside content projection.
+
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656102#questions/4970350
 
 # Life Cycle Hooks
 
