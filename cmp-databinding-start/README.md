@@ -259,7 +259,7 @@ Just like other hooks we also implement DoCheck and import from angular/core.
 
 ## @ContentChild
 
-Similar to @ViewChild, ViewChild is used to fetch the value of local reference in the template.
+Similar to @ViewChild, ContentChild is used to fetch the value of local reference in the template.
 
 ng-content is used to project the content from the parent component in the child component.
 
