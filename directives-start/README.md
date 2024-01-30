@@ -115,3 +115,44 @@ value: number = 5
   <p *ngSwitchDefault>Default value</p>
 </div>
 ```
+
+## Notes on creating own attributeDirectives 
+
+```typescript
+@Directive({
+  selector: 'appBasicHighlight',
+})
+export class BasicHighlightDirective implements OnInit {
+  constructor(private elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    this.elementRef.nativeElement.style.backgroundColor = 'green';
+  }
+}
+```
+
+```HTML
+<div class="row">
+    <h1>
+      <appBasicHighlight>Test Basic Highlight directive</appBasicHighlight>
+    </h1>
+  </div>
+```
+
+# CASE:1
+When the selector `appBasicHighlight` is NOT ENCLOSED between `[]`, so to access the directive we should use the above way of calling it as an element `<appBasicHighlight></appBasicHighlight>`
+
+# CASE:2
+When the selector `appBasicHighlight` is ENCLOSED between `[]` like
+```Typescript
+@Directive({
+  selector: '[appBasicHighlight]',
+})
+```
+
+we can right away use that like
+```HTML
+ <div class="row">
+    <p appBasicHighlight>Test Basic Highlight directive</p>
+  </div>
+```

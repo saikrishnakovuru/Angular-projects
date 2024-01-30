@@ -110,6 +110,37 @@ To be able to fetch that projected content we use `ng-content`.
 
 See the blow example how to use the attributes inside content projection.
 
+// card3.component.html
+```html
+<div class="card">
+  <div class="card-header">
+    <ng-content select="[header-content]"></ng-content>
+  </div>
+  <div class="card-main">
+    <ng-content select="[main-content]"></ng-content>
+  </div>
+  <div class="card-footer">
+    <ng-content select="[footer-content]"></ng-content>
+  </div>
+</div>
+```
+
+//app.component.html
+```html
+<div class="container">
+  <app-card3>
+    <h4 header-content>Card 1: Header (content projection)</h4>
+    <p main-content>Card 1:
+      <button>Main</button>
+      (content projection)
+    </p>
+    <h4 footer-content>Card 1: Footer (content projection)</h4>
+  </app-card3>
+</div>
+```
+
+In the above example we have projected content from the parent component(app-component) to child(card3), so as a rule of thumb let's fetch the content projected using `ng-content` in the child(card3) component. We gave atrributes to each content projected and fetched them using selected 
+
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656102#questions/4970350
 
 # Life Cycle Hooks
