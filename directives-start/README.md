@@ -139,10 +139,10 @@ export class BasicHighlightDirective implements OnInit {
   </div>
 ```
 
-# CASE:1
+## CASE:1
 When the selector `appBasicHighlight` is NOT ENCLOSED between `[]`, so to access the directive we should use the above way of calling it as an element `<appBasicHighlight></appBasicHighlight>`
 
-# CASE:2
+## CASE:2
 When the selector `appBasicHighlight` is ENCLOSED between `[]` like
 ```Typescript
 @Directive({
