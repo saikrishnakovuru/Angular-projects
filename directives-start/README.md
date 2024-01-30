@@ -74,7 +74,7 @@ Lets replace this with `ng-template`
 export class UnlessDirective {
 
     @Input() set unless(condition: boolean) {
-        if (!condition) {
+        if (condition) {
             this.viewContainerRef.createEmbeddedView(this.templateRef);
         } else {
             this.viewContainerRef.clear();
@@ -96,6 +96,59 @@ The two parameters in the constructor are TemplateRef and ViewContainerRef.
 `TemplateRef (what)` is basically provides access to the structure of the template. Instances of TemplateRef are typically obtained from the ng-template.
 
 `ViewContainerRef (where)` represents a container `where` views can be attached and detached dynamically.
+
+## Exmaple creating custom `If` directive
+
+```typescript
+@Directive({
+  selector: '[appIf]',
+})
+export class IfDirective {
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private viewContainerRef: ViewContainerRef
+  ) {}
+
+  @Input() set appIf(condition: boolean) {
+    if (condition) {
+      this.viewContainerRef.createEmbeddedView(this.templateRef);
+    } else {
+      this.viewContainerRef.clear();
+    }
+  }
+}
+```
+
+Initialy we craeted the directive and lets use that in the TS class.
+
+```typescript
+export class AppComponent {
+  numbers = [1, 2, 3, 4, 5];
+  onlyOdd = false;
+  public buttonName: string = 'enable';
+  public isClicked: boolean = false;
+
+  public onDisplayClicked() {
+    this.isClicked = !this.isClicked;
+    this.buttonName = this.buttonName === 'enable' ? 'disable' : 'enable';
+  }
+}
+```
+
+```HTML
+<div>
+    <button class="btn btn-success" (click)="onDisplayClicked()">{{buttonName}}</button>
+    <div *appIf="isClicked">
+      @for(number of numbers;track $index){
+      <li class="list-group-item">
+        {{ number }}
+      </li>
+      }
+    </div>
+  </div>
+```
+
+In the above example we created a button which initially named enable to show the list of numbers. As soon as we click the button named `enable` the list of nubers will be shown and the button name gets changed to `disable`. We only show the list while only clicking on enable based on the custom if conditoin which is `appIf`
 
 ## ngSwitch
 
