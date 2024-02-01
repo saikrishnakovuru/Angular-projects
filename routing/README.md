@@ -105,7 +105,7 @@ when a path is appended with `/` then it appends it to the root domain which is 
 
 Example `/users` is `absolute path`  and `users or ./users` is `relative path`
 
-# Relative Path
+### Relative Path
 
 `Relative path appends the path we define to the end of current path`. For example in this specific module try to add a link in the serves component.
 
@@ -116,7 +116,7 @@ Example `/users` is `absolute path`  and `users or ./users` is `relative path`
 below image show how it looks and the URL as well on hovering the server in the servers component.
 ![Alt text](image.png)
 
-# Absolute Path
+### Absolute Path
 
 To make it absolute(something with appends to the root domain) simply append `/` infront of the routerLink
 
