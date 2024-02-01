@@ -157,6 +157,7 @@ In case we like to navigate to server page from the home page by clicking a butt
 ```html
 <button class="btn btn-success" (click)="onRedirecting()">Redirect to server</button>
 ```
+
 //home.component.ts
 
 ```typescript
@@ -167,6 +168,18 @@ onRedirecting(): void {
     this.router.navigate(['/servers']);
 }
 ```
+
+> Note: Unlike the `routerLink`, `router` do not know the current URL which it is in. To let the router know in which URL path it is in ActivatedRoute comes into the picture.
+
+```typescript
+constructor(private router: Router, private activatedRoute:ActivatedRoute) {
+}
+
+onRedirecting(): void {
+    this.router.navigate(['/servers'],{relativeTo: this.activatedRoute});
+}
+```
+
 
 ## Passing Parameters to Routes
 
