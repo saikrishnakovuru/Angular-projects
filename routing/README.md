@@ -99,6 +99,31 @@ If we right away write the path inside " " after declaring routerLink inside [],
 To make it simpler when we need to attach multiple routes we enclose it in between array again `[routerLink]="['/users']"`
 for example `[routerLink]="['/users','user']"` now the path is `/users/user`.
 
+## Navigation Paths
+
+when a path is appended with `/` then it appends it to the root domain which is an `absolute path`. Relative path is which without `/` or with `./` .
+
+Example `/users` is `absolute path`  and `users or ./users` is `relative path`
+
+# Relative Path
+
+`Relative path appends the path we define to the end of current path`. For example in this specific module try to add a link in the serves component.
+
+```HTML
+ <a routerLink="server">Reload server</a>
+```
+
+below image show how it looks and the URL as well on hovering the server in the servers component.
+![Alt text](image.png)
+
+# Absolute Path
+
+To make it absolute(something with appends to the root domain) simply append `/` infront of the routerLink
+
+```HTML
+ <a routerLink="/server">Reload server</a>
+```
+
 
 ## Styling active route links
 
@@ -123,13 +148,6 @@ adding `routeLinkActive` directive helps to only highlight the selected link
 
 > `[routerLinkActiveOptions]="{exact: true}"` is only given to the empty path `''` this is because, the angular search if the path is in the link. Since empty path that is '/' is almost available in all the links the home section in our example always gets highlighted.
 > So to overcome this we tell angular to only highlight when that specific path is only searched.
-
-
-## Navigation Paths
-
-when a path is appended with `/` then it appends it to the root domain which is an `absolute path`. Relative path is which without `/` or with `./` .
-
-Example `/users` is `absolute path`  and `users or ./users` is `relative path`
 
 ## Navigate programmatically
 
